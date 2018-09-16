@@ -45,41 +45,43 @@ public class Evaluator {
 
 
     //parses expression
-    while ( this.tokenizer.hasMoreTokens() ) {
-      // filter out spaces
-      if ( !( token = this.tokenizer.nextToken() ).equals( " " )) {
-        // check if token is an operand
-        if ( Operand.check( token )) {
-          operandStack.push( new Operand( token ));
-        } else {
-          if ( ! Operator.check( token )) {
-            System.out.println( "*****invalid token******" );
-            throw new RuntimeException("*****invalid token******");
+   
+    while (this.tokenizer.hasMoreTokens()) {
+        // filter out spaces
+        if (!(token = this.tokenizer.nextToken()).equals(" ")) {
+            token.replaceAll(" " , "");
+          // check if token is an operand
+          if (Operand.check(token)) {
+            operandStack.push(new Operand(token));
+          } else {
+            if (!Operator.check(token)) {//invalid
+              System.out.println("*****invalid token******");
+              throw new RuntimeException("*****invalid token******");
+            } else { //an operator
+              Operator newOperator = Operator.operators.get(token);//need to create a new operator object
+              if (operatorStack.isEmpty()) {
+                operatorStack.push(newOperator);
+              } else if ((operatorStack.peek().priority() <= newOperator.priority())) {
+                operatorStack.push(newOperator);
+              }
+            }
           }
+        }//close loop to filter out spaces
 
-
-          // TODO Operator is abstract - these two lines will need to be fixed:
-          // The Operator class should contain an instance of a HashMap,
-          // and values will be instances of the Operators.  See Operator class
-          // skeleton for an example.
-
-          Operator newOperator = Operator.operators.get(token);
-
-          while (operatorStack.peek().priority() >= newOperator.priority() ) {
-            // note that when we eval the expression 1 - 2 we will
-            // push the 1 then the 2 and then do the subtraction operation
-            // This means that the first number to be popped is the
-            // second operand, not the first operand - see the following code
-            Operator oldOpr = operatorStack.pop();
-            Operand op2 = operandStack.pop();
-            Operand op1 = operandStack.pop();
-            operandStack.push( oldOpr.execute( op1, op2 ));
-          }
-
-          operatorStack.push( newOperator );
-        }
       }
+
+    //while (operatorStack.peek().priority() >= newOperator.priority()) {
+    // note that when we eval the expression 1 - 2 we will
+    // push the 1 then the 2 and then do the subtraction operation
+    // This means that the first number to be popped is the
+    // second operand, not the first operand - see the following code
+    while(!operatorStack.isEmpty()) {
+      Operator oldOpr = operatorStack.pop();
+      Operand op2 = operandStack.pop();
+      Operand op1 = operandStack.pop();
+      operandStack.push(oldOpr.execute(op1, op2));
     }
+    return operandStack.pop().getValue();
 
     
     // Control gets here when we've picked up all of the tokens; you must add
@@ -93,6 +95,5 @@ public class Evaluator {
     // Suggestion: create a method that takes an operator as argument and
     // then executes the while loop.
     
-    return 0;
-  }
+  }//end of eval
 }

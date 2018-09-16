@@ -46,7 +46,7 @@ public class Evaluator {
 
     //parses expression
    
-    while (this.tokenizer.hasMoreTokens()) {
+while (this.tokenizer.hasMoreTokens()) {
         // filter out spaces
         if (!(token = this.tokenizer.nextToken()).equals(" ")) {
             token.replaceAll(" " , "");
@@ -61,8 +61,23 @@ public class Evaluator {
               Operator newOperator = Operator.operators.get(token);//need to create a new operator object
               if (operatorStack.isEmpty()) {
                 operatorStack.push(newOperator);
-              } else if ((operatorStack.peek().priority() <= newOperator.priority())) {
+              }
+              /*else if ((operatorStack.peek().priority() <= newOperator.priority())) {
                 operatorStack.push(newOperator);
+              }*/
+              else{
+                  if (operandStack.size() >=2 && operatorStack.peek().priority() >= newOperator.priority()) {
+                          Operator oldOpr = operatorStack.pop();
+                          Operand op2 = operandStack.pop();
+                          Operand op1 = operandStack.pop();
+                          operandStack.push(oldOpr.execute(op1, op2));
+
+                          operatorStack.push(newOperator);
+                  }else{
+                      operatorStack.push(newOperator);
+                  }
+
+
               }
             }
           }
@@ -83,17 +98,5 @@ public class Evaluator {
     }
     return operandStack.pop().getValue();
 
-    
-    // Control gets here when we've picked up all of the tokens; you must add
-    // code to complete the evaluation - consider how the code given here
-    // will evaluate the expression 1+2*3
-    // When we have no more tokens to scan, the operand stack will contain 1 2
-    // and the operator stack will have + * with 2 and * on the top;
-    // In order to complete the evaluation we must empty the stacks (except
-    // the init operator on the operator stack); that is, we should keep
-    // evaluating the operator stack until it only contains the init operator;
-    // Suggestion: create a method that takes an operator as argument and
-    // then executes the while loop.
-    
-  }//end of eval
+  }
 }

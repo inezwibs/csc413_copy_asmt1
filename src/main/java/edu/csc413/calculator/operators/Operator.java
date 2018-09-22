@@ -1,7 +1,5 @@
 package edu.csc413.calculator.operators;
 
-
-
 import edu.csc413.calculator.evaluator.Operand;
 
 import java.util.HashMap;
@@ -20,10 +18,11 @@ public abstract class Operator {
 
     public static HashMap<String,Operator> operators;
 
-    static {
+    static{
+           operators = new HashMap<>(); //create an instance
 
-        operators = new HashMap<>(); //create an instance
     }
+
 
 
     //using the above <string,operator> generics

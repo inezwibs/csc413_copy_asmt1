@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>edu.csc413.calculator</OriginalElement>
+  <nodes>
+    <node x="619.1233164983165" y="0.0">edu.csc413.calculator.evaluator.Operand</node>
+    <node x="915.0833333333335" y="270.0">edu.csc413.calculator.operators.DivideOperator</node>
+    <node x="634.5833333333334" y="468.0">edu.csc413.calculator.evaluator.EvaluatorUI</node>
+    <node x="778.0833333333334" y="270.0">edu.csc413.calculator.operators.AddOperator</node>
+    <node x="568.5833333333334" y="389.0">edu.csc413.calculator.evaluator.Evaluator</node>
+    <node x="318.00000000000006" y="270.0">edu.csc413.calculator.operators.LParenOperator</node>
+    <node x="0.0" y="270.0">edu.csc413.calculator.operators.SubtractOperator</node>
+    <node x="421.31944444444446" y="171.0">edu.csc413.calculator.operators.Operator</node>
+    <node x="159.00000000000006" y="270.0">edu.csc413.calculator.operators.MultiplyOperator</node>
+    <node x="626.0833333333334" y="270.0">edu.csc413.calculator.operators.RParenOperator</node>
+    <node x="486.58333333333337" y="468.0">edu.csc413.calculator.evaluator.EvaluatorDriver</node>
+    <node x="478.08333333333337" y="270.0">edu.csc413.calculator.operators.PowerOperator</node>
+  </nodes>
+  <notes>
+    <note x="291.30229377104376" y="12.0">
+      <node>edu.csc413.calculator.operators.Operator</node>
+      <value>Operator is an Abstract class</value>
+      <edge>
+        <point x="-23.75" y="-14.5" />
+        <point x="445.06944444444446" y="71.0" />
+        <point x="402.80229377104376" y="71.0" />
+        <point x="0.0" y="13.5" />
+      </edge>
+    </note>
+  </notes>
+  <edges>
+    <edge source="edu.csc413.calculator.operators.SubtractOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="-46.33333333333337" y="-14.5" />
+      <point x="23.16666666666663" y="250.0" />
+      <point x="44.923505892255776" y="250.0" />
+      <point x="44.923505892255776" y="81.0" />
+      <point x="622.1858164983165" y="81.0" />
+      <point x="-45.9375" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.RParenOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="33.0" y="-14.5" />
+      <point x="725.0833333333334" y="151.0" />
+      <point x="671.1858164983165" y="151.0" />
+      <point x="3.0625" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.PowerOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="1.1368683772161603E-13" y="-14.5" />
+      <point x="542.0833333333335" y="250.0" />
+      <point x="548.7727272727275" y="250.0" />
+      <point x="548.7727272727275" y="141.0" />
+      <point x="658.9358164983165" y="141.0" />
+      <point x="-9.1875" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.DivideOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="-42.66666666666666" y="-14.5" />
+      <point x="936.4166666666669" y="220.0" />
+      <point x="511.04166666666663" y="220.0" />
+      <point x="42.22222222222217" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.Operator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="23.75" y="-14.5" />
+      <point x="492.56944444444446" y="131.0" />
+      <point x="652.8108164983165" y="131.0" />
+      <point x="-15.3125" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.AddOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="-39.0" y="-14.5" />
+      <point x="797.5833333333334" y="230.0" />
+      <point x="500.4861111111111" y="230.0" />
+      <point x="31.66666666666663" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.EvaluatorDriver" target="edu.csc413.calculator.evaluator.Evaluator">
+      <point x="-32.0" y="-14.5" />
+      <point x="518.5833333333334" y="438.0" />
+      <point x="580.7083333333334" y="438.0" />
+      <point x="-36.375" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.MultiplyOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="46.33333333333337" y="-14.5" />
+      <point x="274.8333333333334" y="240.0" />
+      <point x="437.1527777777778" y="240.0" />
+      <point x="-31.66666666666663" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.MultiplyOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="0.0" y="-14.5" />
+      <point x="228.50000000000006" y="220.0" />
+      <point x="214.9235058922559" y="220.0" />
+      <point x="214.9235058922559" y="111.0" />
+      <point x="640.5608164983165" y="111.0" />
+      <point x="-27.5625" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="44.45833333333337" y="-14.5" />
+      <point x="661.5416666666667" y="369.0" />
+      <point x="1069.7500000000005" y="369.0" />
+      <point x="1069.7500000000005" y="81.0" />
+      <point x="714.0608164983165" y="81.0" />
+      <point x="45.9375" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.LParenOperator">
+      <point x="-28.291666666666742" y="-14.5" />
+      <point x="588.7916666666666" y="349.0" />
+      <point x="383.50000000000006" y="349.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.PowerOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="-42.666666666666515" y="-14.5" />
+      <point x="499.41666666666686" y="250.0" />
+      <point x="479.375" y="250.0" />
+      <point x="10.555555555555543" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.LParenOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="32.75" y="-14.5" />
+      <point x="416.25000000000006" y="250.0" />
+      <point x="447.70833333333337" y="250.0" />
+      <point x="-21.111111111111086" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.SubtractOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="46.333333333333314" y="-14.5" />
+      <point x="115.83333333333331" y="230.0" />
+      <point x="426.5972222222223" y="230.0" />
+      <point x="-42.22222222222217" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.LParenOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="-32.75" y="-14.5" />
+      <point x="350.75000000000006" y="121.0" />
+      <point x="646.6858164983165" y="121.0" />
+      <point x="-21.4375" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.SubtractOperator">
+      <point x="-44.45833333333337" y="-14.5" />
+      <point x="572.625" y="369.0" />
+      <point x="69.5" y="369.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.MultiplyOperator">
+      <point x="-36.375" y="-14.5" />
+      <point x="580.7083333333334" y="359.0" />
+      <point x="228.50000000000006" y="359.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.PowerOperator">
+      <point x="-4.041666666666629" y="-14.5" />
+      <point x="613.0416666666667" y="319.0" />
+      <point x="542.0833333333334" y="319.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.AddOperator">
+      <point x="12.125" y="-14.5" />
+      <point x="629.2083333333334" y="329.0" />
+      <point x="836.5833333333334" y="329.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.Operator">
+      <point x="-20.20833333333337" y="-14.5" />
+      <point x="596.875" y="339.0" />
+      <point x="459.5" y="339.0" />
+      <point x="459.5" y="250.0" />
+      <point x="458.2638888888889" y="250.0" />
+      <point x="-10.555555555555543" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.DivideOperator">
+      <point x="20.20833333333337" y="-14.5" />
+      <point x="637.2916666666667" y="339.0" />
+      <point x="979.0833333333335" y="339.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.EvaluatorUI" target="edu.csc413.calculator.evaluator.Evaluator">
+      <point x="27.0" y="-14.5" />
+      <point x="715.5833333333334" y="438.0" />
+      <point x="653.4583333333334" y="438.0" />
+      <point x="36.375" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.evaluator.Evaluator" target="edu.csc413.calculator.operators.RParenOperator">
+      <point x="4.041666666666629" y="-14.5" />
+      <point x="621.125" y="319.0" />
+      <point x="692.0833333333334" y="319.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.RParenOperator" target="edu.csc413.calculator.operators.Operator">
+      <point x="-33.0" y="-14.5" />
+      <point x="659.0833333333334" y="240.0" />
+      <point x="489.93055555555554" y="240.0" />
+      <point x="21.111111111111086" y="14.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.DivideOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="0.0" y="-14.5" />
+      <point x="979.0833333333335" y="250.0" />
+      <point x="985.7727272727274" y="250.0" />
+      <point x="985.7727272727274" y="121.0" />
+      <point x="689.5608164983165" y="121.0" />
+      <point x="21.4375" y="25.5" />
+    </edge>
+    <edge source="edu.csc413.calculator.operators.AddOperator" target="edu.csc413.calculator.evaluator.Operand">
+      <point x="39.0" y="-14.5" />
+      <point x="875.5833333333334" y="250.0" />
+      <point x="883.5606060606061" y="250.0" />
+      <point x="883.5606060606061" y="131.0" />
+      <point x="683.4358164983165" y="131.0" />
+      <point x="15.3125" y="25.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1744827586206896" x="521.4310041103934" y="243.285378743394" />
+  <SelectedNodes>
+    <node>edu.csc413.calculator.operators.Operator</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

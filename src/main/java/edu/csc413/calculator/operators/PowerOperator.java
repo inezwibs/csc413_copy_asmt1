@@ -11,7 +11,7 @@ public class PowerOperator extends Operator {
 
     @Override
     public Operand execute(Operand op1, Operand op2) {
-        double num = Math.pow(op1.getValue(),op1.getValue());
+        double num = Math.pow(op1.getValue(),op2.getValue());
         Operand resultPowObj = new Operand ((int) num); //cast double to integer
         return resultPowObj;
     }

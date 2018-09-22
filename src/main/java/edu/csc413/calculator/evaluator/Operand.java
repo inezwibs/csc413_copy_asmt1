@@ -1,7 +1,6 @@
 package edu.csc413.calculator.evaluator;
 import java.lang.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
  * Operand class used to represent an operand
@@ -35,13 +34,14 @@ public class Operand {
    * operand.
    */
   public static boolean check( String token ) { //valid when token is an Operand  1,2,3,etc.
-    String regex = "[+-]?[0-9][0-9]*";//using regext to check for integer in string
 
-    if (token.contains(regex)){
-
+    try{
+      int num = Integer.parseInt(token);
       return true;
+    }catch (NumberFormatException e){
+      return false;
+
     }
 
-    return false;
   }
 }

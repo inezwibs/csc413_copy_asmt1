@@ -6,7 +6,7 @@ public class LParenOperator extends Operator {
 
     @Override
     public int priority() {
-        return 4;
+        return 5;
     }
 
     @Override

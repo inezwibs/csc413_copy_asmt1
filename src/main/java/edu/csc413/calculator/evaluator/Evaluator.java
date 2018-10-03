@@ -1,28 +1,27 @@
 package edu.csc413.calculator.evaluator;
 
 import edu.csc413.calculator.operators.*;
-
-import java.util.HashMap;
 import java.util.Stack;
 import java.util.StringTokenizer;
+import static edu.csc413.calculator.operators.Operator.operators;
 
 public class Evaluator {
   private Stack<Operand> operandStack;//this stack contains operand objects
   private Stack<Operator> operatorStack;//this stack contains operator objects
   private StringTokenizer tokenizer;
-  private static final String DELIMITERS = "+-*^/()";
+  private static final String DELIMITERS = "+-*^/() ";
 
   public Evaluator() {//constructor enables creation of the stacks
     operandStack = new Stack<>();
     operatorStack = new Stack<>();
 
-    Operator.operators.put("+", new AddOperator());
-    Operator.operators.put("-", new SubtractOperator ());
-    Operator.operators.put("*", new MultiplyOperator());
-    Operator.operators.put("/", new DivideOperator());
-    Operator.operators.put("^", new PowerOperator());
-    Operator.operators.put("(", new LParenOperator());
-    Operator.operators.put(")", new RParenOperator());
+    operators.put("+", new AddOperator());
+    operators.put("-", new SubtractOperator ());
+    operators.put("*", new MultiplyOperator());
+    operators.put("/", new DivideOperator());
+    operators.put("^", new PowerOperator());
+    operators.put("(", new LParenOperator());
+    operators.put(")", new RParenOperator());
 
   }
 
@@ -35,7 +34,7 @@ public class Evaluator {
 
     // initialize operator stack - necessary with operator priority schema
     // the priority of any operator in the operator stack other than
-    // the usual mathematical operators - "+-*/" - should be less than the priority
+    // the usual mathematical operators - "+-*/ " - should be less than the priority
     // of the usual operators
 
 
@@ -49,7 +48,8 @@ public class Evaluator {
     while (this.tokenizer.hasMoreTokens()) {
       // filter out spaces
       if (!(token = this.tokenizer.nextToken()).equals(" ")) {
-        token.replaceAll(" " , "");
+        //token.replaceAll(" " , "");
+        //token.split("\\s+");
         // check if token is an operand
         if (Operand.check(token)) {
           operandStack.push(new Operand(token));
@@ -58,12 +58,27 @@ public class Evaluator {
             System.out.println("*****invalid token******");
             throw new RuntimeException("*****invalid token******");
           } else { //an operator
-            Operator newOperator = Operator.operators.get(token);//need to create a new operator object
+            /*If an operator token is scanned, and the operator Stack is empty, then an Operator
+            object is created from the token, and pushed to the operator Stack
+            */
+            Operator newOperator = operators.get(token);//need to create a new operator object
             if (operatorStack.isEmpty() ) {
               operatorStack.push(newOperator);
-            }else if ("(".equals(newOperator)){
+              /*
+              If an operator token is scanned, and the operator Stack is not empty, and the
+              operator’s precedence is greater than the precedence of the Operator at the top of
+              the Stack, then and Operator object is created from the token, and pushed to the
+              operator Stack
+              If the token is (, and Operator object is created from the token, and pushed to the
+              operator Stack
+               */
+            }else if (newOperator.priority()==5){//5 is left parenthesis
               operatorStack.push(newOperator);
-              continue;
+            /*
+
+            If the token is ), the process Operators until the corresponding ( is encountered.
+            Pop the ( Operator.
+             */
             }else if (token.equals(")")){
               do {
                 Operator oldOpr = operatorStack.pop();
@@ -71,22 +86,24 @@ public class Evaluator {
                 Operand op1 = operandStack.pop();
                 operandStack.push(oldOpr.execute(op1, op2));
 
-              }while ("(".equals(operatorStack.peek()));
+              }while (operatorStack.peek().priority()!=5);//hits 5 then it is left parens
+              operatorStack.pop();//should pop the left parens
             }
               /*else if ((operatorStack.peek().priority() <= newOperator.priority())) {
                 operatorStack.push(newOperator);
               }*/
             else{
               if (operandStack.size() >=2 && operatorStack.peek().priority() >= newOperator.priority()) {
-                while ("(".equals(operatorStack.peek())){
-                  operatorStack.pop();
+                if (operatorStack.peek().priority()>=4){//which means it open or close parens
+                  operatorStack.push(newOperator);
+                  continue;
                 }
                 Operator oldOpr = operatorStack.pop();
                 Operand op2 = operandStack.pop();
                 Operand op1 = operandStack.pop();
                 operandStack.push(oldOpr.execute(op1, op2));
 
-                operatorStack.push(newOperator);
+                operatorStack.push(newOperator);//push new operator on to operator stack
               }else{
                 operatorStack.push(newOperator);
               }
@@ -106,7 +123,7 @@ public class Evaluator {
     // second operand, not the first operand - see the following code
     //once the string is empty go here
     while(!operatorStack.isEmpty()) {
-      if ("(".equals(operatorStack.peek())){
+      if (operatorStack.peek().priority() == 5){//has a left parenthesis
         operatorStack.pop();
       }else{
         Operator oldOpr = operatorStack.pop();

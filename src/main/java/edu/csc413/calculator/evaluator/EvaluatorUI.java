@@ -9,12 +9,13 @@ public class EvaluatorUI extends JFrame implements ActionListener {
 
     private TextField txField = new TextField();
     private Panel buttonPanel = new Panel();
+    private static final String DELIMITERS = "+-*^/()";
 
     // total of 20 buttons on the calculator,
     // numbered from left to right, top to bottom
     // bText[] array contains the text for corresponding buttons
     private static final String[] bText = {
-        "7", "8", "9", "+", "4", "5", "6", "- ", "1", "2", "3",
+        "7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3",
         "*", "0", "^", "=", "/", "(", ")", "C", "CE"
     };
 
@@ -66,5 +67,59 @@ public class EvaluatorUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent arg0) {
         // You need to fill in this fuction
+
+            if(arg0.getSource().equals(buttons[0])){
+                txField.setText(txField.getText() + bText[0]);
+            }else if (arg0.getSource().equals(buttons[1])) {//button 8
+                txField.setText(txField.getText() + bText[1]);
+            }else if(arg0.getSource().equals(buttons[2])){//button 9
+                txField.setText(txField.getText() + bText[2]);
+            }else if(arg0.getSource().equals(buttons[3])){//button +
+                txField.setText(txField.getText() + bText[3]);
+            }else if(arg0.getSource().equals(buttons[4])){//button 4
+                txField.setText(txField.getText() + bText[4]);
+            }else if(arg0.getSource().equals(buttons[5])){ //button 5
+                txField.setText(txField.getText() + bText[5]);
+            }else if(arg0.getSource().equals(buttons[6])){//button 6
+                txField.setText(txField.getText() + bText[6]);
+            }else if(arg0.getSource().equals(buttons[7])){//button -
+                txField.setText(txField.getText() + bText[7]);
+            }else if (arg0.getSource().equals(buttons[8])) {//button 1
+                txField.setText(txField.getText() + bText[8]);
+            }else if(arg0.getSource().equals(buttons[9])){//button 2
+                txField.setText(txField.getText() + bText[9]);
+            }else if(arg0.getSource().equals(buttons[10])){//button 3
+                txField.setText(txField.getText() + bText[10]);
+            }else if(arg0.getSource().equals(buttons[11])){//button *
+                txField.setText(txField.getText() + bText[11]);
+            }else if(arg0.getSource().equals(buttons[12])){ //button 0
+                txField.setText(txField.getText() + bText[12]);
+            }else if(arg0.getSource().equals(buttons[13])){//button ^
+                txField.setText(txField.getText() + bText[13]);
+            }else if(arg0.getSource().equals(buttons[14])) {//button = equals button needs to evaluate
+
+                Evaluator myEv = new Evaluator();
+                int result = myEv.eval(txField.getText());
+                txField.setText(Integer.toString(result));
+
+            }else if(arg0.getSource().equals(buttons[15])){ //button /
+                txField.setText(txField.getText() + bText[15]);
+            }else if(arg0.getSource().equals(buttons[16])){//button (
+                txField.setText(txField.getText() + bText[16]);
+            }else if(arg0.getSource().equals(buttons[17])){//button )
+                txField.setText(txField.getText() + bText[17]);
+            }else if (arg0.getSource().equals(buttons[18])){
+                txField.setText(" ");
+
+            }else if (arg0.getSource().equals(buttons[19])){
+                
+                    String result = txField.getText();
+                    txField.setText(result.substring(0, result.length() - 1));
+
+            }else{
+                txField.setText("Something went wrong.Please re-enter");
+            }
+
+
     }
 }
